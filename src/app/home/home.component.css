@@ -5,19 +5,23 @@
 .box::before {
     content: attr(data-text);
     position: absolute;
-    background-color: rgb(242 242 242);
+    background-color: #19283f;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    color: #c92c6d;
+    color: #33d1cc;
     transition: 0.3s;
     font-size: 1rem;
     transform: translateX(calc(-100% - 5px));
 }
 .box:hover::before,.box:focus::before {
     transform: translateX(0);
+}
+.youtube-btn{
+    background-color: #19283f;
+    color: #33d1cc;
 }
   
