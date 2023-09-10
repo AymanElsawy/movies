@@ -13,4 +13,13 @@ export class MoviesService {
   getHomeMovies(){
     return this.http.get<{page:number,total_pages:number,total_results:number,results:Movie[]}>(`${environment.apiUrl}top_rated?${environment.apiKey}${environment.lang}&page=1`);
   }
+  getNowPlayingMovies(){
+    return this.http.get<{page:number,total_pages:number,total_results:number,results:Movie[]}>(`${environment.apiUrl}now_playing?${environment.apiKey}${environment.lang}&page=1`);
+  }
+  getPopularMovies(){
+    return this.http.get<{page:number,total_pages:number,total_results:number,results:Movie[]}>(`${environment.apiUrl}popular?${environment.apiKey}${environment.lang}&page=1`);
+  }
+  getUpcomingMovies(){
+    return this.http.get<{page:number,total_pages:number,total_results:number,results:Movie[]}>(`${environment.apiUrl}upcoming?${environment.apiKey}${environment.lang}&page=1`);
+  }
 }
