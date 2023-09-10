@@ -1,0 +1,13 @@
+.landing {
+    background-color: #19283f;
+    min-height: 30vh;
+  }
+  img {
+    height: 400px;
+  }
+  
+  
+  swiper-container::part(button-next),
+  swiper-container::part(button-prev) {
+    color: white;
+  }
