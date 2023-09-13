@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-sm-12 col-md-4 col-lg-4 mt-2" *ngFor="let movie of movies">
       <section>
-        <div class="card text-center box" [attr.data-text]="movie.overview">
-          <img
+        <div class="card text-center box" (click)="movieDetails(movie.id)" [attr.data-text]="movie.overview">
+          <img 
             src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"
             class="card-img-top img-fluid"
           />
