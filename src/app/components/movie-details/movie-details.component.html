@@ -1,0 +1,48 @@
+<div
+  class="image"
+  [ngStyle]="{
+    background:
+      'linear-gradient(45deg , #19283f , rgba(13, 110, 253, 0.25)),' +
+      'url(' +
+      photo +
+      ')',
+    'background-size': 'cover',
+    'background-repeat': 'no-repeat',
+    'background-position': 'center'
+  }"
+>
+  <div class="container image-overlay">
+    <div class="row mb-2">
+      <div class="col-sm-12 col-md-6 col-lg-3 mt-4">
+        <img
+          src="https://image.tmdb.org/t/p/w500{{ movieDetails.poster_path }}"
+          alt="poster"
+          class="w-100"
+        />
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-9 mt-4">
+        <h3 class="text-capitalize display-3 fw-bolder text-light">{{ movieDetails.title }}</h3>
+        <span *ngFor="let genre of movieDetails.genres" class="text-light">{{ genre.name }} </span>
+        <div>
+          <circle-progress
+            [percent]="movieDetails.vote_average * 10"
+            [radius]="50"
+            subtitle="user score"
+            [outerStrokeWidth]="8"
+            [innerStrokeWidth]="0"
+            [outerStrokeColor]="'#ffffff'"
+            [animation]="true"
+            titleColor="#ffffff"
+            unitsColor="#ffffff"
+            [animationDuration]="500"
+          ></circle-progress>
+          <p class="text-light lead fw-bold">{{ movieDetails.tagline }}</p>
+        </div>
+        <div>
+          <h4 class="text-capitalize fw-bold text-light">overview:</h4>
+          <p class="lead fw-bold text-light">{{ movieDetails.overview }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

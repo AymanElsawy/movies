@@ -1,9 +1,10 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Movie } from 'src/app/models/movie.model';
+import { MoviesService } from 'src/app/services/movies.service';
+import { Router } from '@angular/router';
 // import function to register Swiper custom elements
 import { register } from 'swiper/element/bundle';
-import { Movie } from 'src/models/movie.model';
-import { MoviesService } from 'src/services/movies.service';
 
 // register Swiper custom elements
 register();
@@ -13,7 +14,7 @@ register();
   imports: [CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
   swiperParams: any = {
@@ -60,15 +61,14 @@ export class HeaderComponent {
     },
   };
   movies: Movie[] = [];
-
-  constructor(private MoviesService:MoviesService){}
-  ngOnInit(){
+  constructor(private MoviesService: MoviesService, private router: Router) {}
+  ngOnInit() {
     const swiperEl: any = document.querySelector('swiper-container');
     Object.assign(swiperEl, this.swiperParams);
     this.getMovies();
   }
 
-  getMovies(){
+  getMovies() {
     this.MoviesService.getNowPlayingMovies().subscribe({
       next: (data: {
         page: number;
@@ -80,6 +80,7 @@ export class HeaderComponent {
       },
     });
   }
+  getMovieDetails(id: number) {
+    this.router.navigate(['/details', id]);
+  }
 }
-
-  
