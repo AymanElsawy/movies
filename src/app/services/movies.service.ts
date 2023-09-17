@@ -4,13 +4,14 @@ import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { MoveiDetails } from 'src/app/models/movie-detials';
 import { Movie } from 'src/app/models/movie.model';
+import { MovieVidoes } from '../models/movie-videos';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MoviesService {
   constructor(private http: HttpClient) {}
-  details = new Subject<boolean>() ; 
+  details = new Subject<boolean>();
 
   getHomeMovies() {
     return this.http.get<{
@@ -55,6 +56,11 @@ export class MoviesService {
   getMovieDetails(id: number): Observable<MoveiDetails> {
     return this.http.get<MoveiDetails>(
       `${environment.apiUrl}${id}?${environment.apiKey}${environment.lang}`
+    );
+  }
+  getMovieVideos(id: number) {
+    return this.http.get<{ id: number; results: MovieVidoes[] }>(
+      `${environment.apiUrl}${id}/videos?${environment.apiKey}${environment.lang}`
     );
   }
 }

@@ -17,57 +17,64 @@ register();
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  swiperParams: any = {
-    slidesPerView: 4,
-    autoplay: {
-      delay: 1000,
-    },
-    injectStylesUrls: ['./navbar.component.css'],
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 10,
-      },
-      // when window width is <= 480px
-      480: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
-
-      // when window width is <= 640px
-      640: {
-        slidesPerView: 2,
-        spaceBetween: 30,
-      },
-      390: {
-        slidesPerView: 1,
-        spaceBetween: 20,
-      },
-      768: {
-        slidesPerView: 3,
-        spaceBetween: 40,
-      },
-      1024: {
-        slidesPerView: 3,
-        spaceBetween: 50,
-      },
-      1400: {
-        slidesPerView: 5,
-        spaceBetween: 50,
-      },
-    },
-    on: {
-      init() {},
-    },
-  };
   movies: Movie[] = [];
   constructor(private MoviesService: MoviesService, private router: Router) {}
   ngOnInit() {
-    const swiperEl: any = document.querySelector('swiper-container');
-    Object.assign(swiperEl, this.swiperParams);
+    this.swiperInit();
     this.getMovies();
   }
-
+  swiperInit() {
+    let swiperParams: any = {
+      slidesPerView: 4,
+      mousewheel: {
+        forceToAxis: false,
+      },
+      autoplay: {
+        delay: 1000,
+        disableOnInteraction: true,
+      },
+      loop: true,
+      navigation: true,
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+        390: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        // when window width is <= 480px
+        480: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        // when window width is <= 640px
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 30,
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 50,
+        },
+        1400: {
+          slidesPerView: 4,
+          spaceBetween: 0,
+        },
+      },
+      on: {
+        init() {},
+      },
+    };
+    const swiperEl: any = document.querySelector('.header-swiper');
+    Object.assign(swiperEl, swiperParams);
+    swiperEl.initialize();
+  }
   getMovies() {
     this.MoviesService.getNowPlayingMovies().subscribe({
       next: (data: {

@@ -1,6 +1,15 @@
-.image {
- 
-  height: calc(100vh - 72px);
+.image{
+  height: 100%;
 }
-
-
+iframe {
+  height: 400px;
+  width: 100%;
+}
+h4{
+  color: #33d1cc;
+  font-size: 1.5rem;
+}
+swiper-container::part(button-next),
+swiper-container::part(button-prev) {
+  color: white;
+}

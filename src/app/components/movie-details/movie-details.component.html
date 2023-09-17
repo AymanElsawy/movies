@@ -21,8 +21,15 @@
         />
       </div>
       <div class="col-sm-12 col-md-6 col-lg-9 mt-4">
-        <h3 class="text-capitalize display-3 fw-bolder text-light">{{ movieDetails.title }}</h3>
-        <span *ngFor="let genre of movieDetails.genres" class="text-light">{{ genre.name }} </span>
+        <h3 class="text-capitalize display-3 fw-bolder text-light">
+          {{ movieDetails.title }}
+        </h3>
+        <span
+          *ngFor="let genre of movieDetails.genres; let i = index"
+          class="text-light"
+          >{{ genre.name }}
+          {{ movieDetails.genres.length - 1 === i ? "" : "," }}
+        </span>
         <div>
           <circle-progress
             [percent]="movieDetails.vote_average * 10"
@@ -44,5 +51,13 @@
         </div>
       </div>
     </div>
+  </div>
+  <div>
+    <h4 class="fw-bold text-capitalize text-center" *ngIf="videos">Videos</h4>
+    <swiper-container class="swiper" init="false">
+      <swiper-slide *ngFor="let video of videos">
+        <iframe [src]="video | safe" allowfullscreen> </iframe>
+      </swiper-slide>
+    </swiper-container>
   </div>
 </div>
