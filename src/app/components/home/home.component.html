@@ -1,17 +1,46 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-4 col-lg-4 mt-2" *ngFor="let movie of movies">
-      <section>
-        <div class="card text-center box" (click)="movieDetails(movie.id)" [attr.data-text]="movie.overview">
-          <img 
+<section id="home">
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-sm-12 col-md-4 col-lg-3 mt-2"
+        *ngFor="
+          let movie of movies
+            | paginate
+              : {
+                  id: 'paination',
+                  itemsPerPage: 20,
+                  currentPage: pageNum,
+                  totalItems: 1000
+                }
+        "
+      >
+        <div
+          class="card text-center box"
+          (click)="movieDetails(movie.id)"
+          [attr.data-text]="movie.overview"
+        >
+          <img
             src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"
             class="card-img-top img-fluid"
           />
         </div>
-        <button class="btn youtube-btn w-100">
-          Watch Trailler
+        <button
+          class="btn youtube-btn w-100 justify-content-center"
+          (click)="watchTrailler(movie.id)"
+        >
+          Trailler
+          <i class="bi bi-youtube"></i>
         </button>
-      </section>
+      </div>
+      <div class="d-flex mt-2 justify-content-center">
+        <pagination-controls
+          id="paination"
+          (pageBoundsCorrection)="pageChanged($event)"
+          previousLabel="Previous"
+          nextLabel="Next"
+          (pageChange)="pageChanged($event)"
+        ></pagination-controls>
+      </div>
     </div>
   </div>
-</div>
+</section>
