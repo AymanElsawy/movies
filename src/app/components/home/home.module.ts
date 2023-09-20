@@ -4,14 +4,16 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 
+import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
+import { MovieCardComponent } from '../movie-card/movie-card.component';
 
 @NgModule({
-  declarations: [
-    HomeComponent
-  ],
+  declarations: [HomeComponent],
   imports: [
     CommonModule,
-    HomeRoutingModule
-  ]
+    HomeRoutingModule,
+    NgxPaginationModule,
+    MovieCardComponent,
+  ],
 })
-export class HomeModule { }
+export class HomeModule {}

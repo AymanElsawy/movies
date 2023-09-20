@@ -13,34 +13,34 @@ export class MoviesService {
   constructor(private http: HttpClient) {}
   details = new Subject<boolean>();
 
-  getHomeMovies() {
+  getTopRatedMovies(pageNum: number) {
     return this.http.get<{
       page: number;
       total_pages: number;
       total_results: number;
       results: Movie[];
     }>(
-      `${environment.apiUrl}top_rated?${environment.apiKey}${environment.lang}&page=1`
+      `${environment.apiUrl}top_rated?${environment.apiKey}${environment.lang}&page=${pageNum}`
     );
   }
-  getNowPlayingMovies() {
+  getNowPlayingMovies(pageNum: number) {
     return this.http.get<{
       page: number;
       total_pages: number;
       total_results: number;
       results: Movie[];
     }>(
-      `${environment.apiUrl}now_playing?${environment.apiKey}${environment.lang}&page=1`
+      `${environment.apiUrl}now_playing?${environment.apiKey}${environment.lang}&page=${pageNum}`
     );
   }
-  getPopularMovies() {
+  getPopularMovies(pageNum:number) {
     return this.http.get<{
       page: number;
       total_pages: number;
       total_results: number;
       results: Movie[];
     }>(
-      `${environment.apiUrl}popular?${environment.apiKey}${environment.lang}&page=1`
+      `${environment.apiUrl}popular?${environment.apiKey}${environment.lang}&page=${pageNum}`
     );
   }
   getUpcomingMovies() {

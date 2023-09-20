@@ -1,0 +1,19 @@
+<section>
+  <div
+    class="card text-center box"
+    (click)="movieDetails(movie.id)"
+    [attr.data-text]="movie.overview"
+  >
+    <img
+      src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"
+      class="img-fluid"
+    />
+  </div>
+  <button
+    class="btn youtube-btn w-100 justify-content-center"
+    (click)="watchTrailler(movie.id)"
+  >
+    Trailler
+    <i class="bi bi-youtube"></i>
+  </button>
+</section>

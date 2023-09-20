@@ -1,6 +1,6 @@
 import { MoviesService } from 'src/app/services/movies.service';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MoveiDetails } from 'src/app/models/movie-detials';
 
 @Component({
@@ -27,7 +27,6 @@ export class MovieDetailsComponent {
     this.route.data.subscribe({
       next: (data) => {
         this.movieDetails = data['details'];
-        console.log(this.movieDetails);
         this.photo =
           'https://image.tmdb.org/t/p/w1920_and_h800_multi_faces' +
           this.movieDetails.backdrop_path;
@@ -36,10 +35,10 @@ export class MovieDetailsComponent {
     });
   }
   swiperInit() {
-   let swiperParams: any = {
+    let swiperParams: any = {
       slidesPerView: 4,
-      mousewheel:{
-        forceToAxis:false
+      mousewheel: {
+        forceToAxis: false,
       },
       loop: true,
       navigation: true,
@@ -71,8 +70,8 @@ export class MovieDetailsComponent {
           spaceBetween: 50,
         },
         1400: {
-          slidesPerView: 5,
-          spaceBetween: 0,
+          slidesPerView: 4,
+          spaceBetween: 50,
         },
       },
       on: {

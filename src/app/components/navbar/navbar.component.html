@@ -18,16 +18,29 @@
       <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
         <li class="nav-item">
           <a
-            class="nav-link active p-2 p-lg-3 text-capitalize"
+            class="nav-link fw-bold active p-2 p-lg-3 text-capitalize"
             aria-current="page"
-            >Home <span class="visually-hidden">(current)</span></a
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link fw-bold p-2 p-lg-3 text-capitalize"
+            routerLink="/top-rated"
+            routerLinkActive="active"
+            >top rated</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link p-2 p-lg-3 text-capitalize">top rated</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link p-2 p-lg-3 text-capitalize">popular</a>
+          <a
+            class="nav-link fw-bold p-2 p-lg-3 text-capitalize"
+            routerLink="/popular"
+            routerLinkActive="active"
+            >popular</a
+          >
         </li>
       </ul>
       <div class="search d-none d-lg-block ps-3 pe-3">
