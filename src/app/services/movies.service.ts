@@ -23,7 +23,7 @@ export class MoviesService {
       `${environment.apiUrl}top_rated?${environment.apiKey}${environment.lang}&page=${pageNum}`
     );
   }
-  getNowPlayingMovies(pageNum:number) {
+  getNowPlayingMovies(pageNum: number) {
     return this.http.get<{
       page: number;
       total_pages: number;
@@ -33,14 +33,14 @@ export class MoviesService {
       `${environment.apiUrl}now_playing?${environment.apiKey}${environment.lang}&page=${pageNum}`
     );
   }
-  getPopularMovies() {
+  getPopularMovies(pageNum:number) {
     return this.http.get<{
       page: number;
       total_pages: number;
       total_results: number;
       results: Movie[];
     }>(
-      `${environment.apiUrl}popular?${environment.apiKey}${environment.lang}&page=1`
+      `${environment.apiUrl}popular?${environment.apiKey}${environment.lang}&page=${pageNum}`
     );
   }
   getUpcomingMovies() {

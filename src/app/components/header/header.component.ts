@@ -76,7 +76,7 @@ export class HeaderComponent {
     swiperEl.initialize();
   }
   getMovies() {
-    this.MoviesService.getPopularMovies().subscribe({
+    this.MoviesService.getPopularMovies(1).subscribe({
       next: (data: {
         page: number;
         total_pages: number;

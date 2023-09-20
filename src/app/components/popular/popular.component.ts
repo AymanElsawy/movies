@@ -3,20 +3,20 @@ import { Movie } from 'src/app/models/movie.model';
 import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'app-popular',
+  templateUrl: './popular.component.html',
+  styleUrls: ['./popular.component.css'],
 })
-export class HomeComponent {
+export class PopularComponent {
   movies: Movie[] = [];
   pageNum = signal(1);
   constructor(private MoviesService: MoviesService) {}
 
   ngOnInit() {
-    this.getHomeMovies(this.pageNum());
+    this.getPopularMovies(this.pageNum());
   }
-  getHomeMovies(page: number) {
-    this.MoviesService.getNowPlayingMovies(page).subscribe({
+  getPopularMovies(page: number) {
+    this.MoviesService.getPopularMovies(page).subscribe({
       next: (data: {
         page: number;
         total_pages: number;
@@ -37,6 +37,6 @@ export class HomeComponent {
       left: 0,
       behavior: 'smooth',
     });
-    this.getHomeMovies(this.pageNum());
+    this.getPopularMovies(this.pageNum());
   }
 }

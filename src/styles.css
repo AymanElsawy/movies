@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-
-.ngx-pagination .current {
-  background: #19283f !important;
-  color: #33d1cc !important;
+#home {
+  background-color: #19283f;
+}
+.my-pagination .ngx-pagination{
+  background-color: #33d1cc;
+}
+.my-pagination .ngx-pagination .current {
+  background: #19283f;
 }
