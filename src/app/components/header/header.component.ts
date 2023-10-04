@@ -5,13 +5,14 @@ import { MoviesService } from 'src/app/services/movies.service';
 import { Router } from '@angular/router';
 // import function to register Swiper custom elements
 import { register } from 'swiper/element/bundle';
+import { LoaderComponent } from '../loader/loader.component';
 
 // register Swiper custom elements
 register();
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,LoaderComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],

@@ -6,6 +6,7 @@
         you can watch and know more details about your fav movie.
       </p>
       <div>
+        <app-loader *ngIf="movies.length == 0"></app-loader>
         <swiper-container init="false" class="header-swiper">
           <swiper-slide *ngFor="let movie of movies">
             <img
@@ -14,6 +15,7 @@
               alt="poster"
               class="rounded-5"
             />
+            <app-loader *ngIf="!movie.poster_path"></app-loader>
           </swiper-slide>
         </swiper-container>
       </div>
