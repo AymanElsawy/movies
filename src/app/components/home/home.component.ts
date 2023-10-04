@@ -13,6 +13,7 @@ export class HomeComponent {
   constructor(private MoviesService: MoviesService) {}
 
   ngOnInit() {
+    this.MoviesService.details.next(false);
     this.getHomeMovies(this.pageNum());
   }
   getHomeMovies(page: number) {
