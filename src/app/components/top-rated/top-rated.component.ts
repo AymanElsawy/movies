@@ -13,6 +13,7 @@ export class TopRatedComponent {
   constructor(private MoviesService: MoviesService) {}
 
   ngOnInit() {
+    this.MoviesService.details.next(false);
     this.getTopRatedMovies(this.pageNum());
   }
   getTopRatedMovies(page: number) {

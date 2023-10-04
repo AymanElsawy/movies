@@ -13,6 +13,7 @@ export class PopularComponent {
   constructor(private MoviesService: MoviesService) {}
 
   ngOnInit() {
+    this.MoviesService.details.next(false);
     this.getPopularMovies(this.pageNum());
   }
   getPopularMovies(page: number) {
