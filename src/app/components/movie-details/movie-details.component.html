@@ -49,6 +49,16 @@
           <h4 class="text-capitalize fw-bold text-light">overview:</h4>
           <p class="lead fw-bold text-light">{{ movieDetails.overview }}</p>
         </div>
+      
+      </div>
+      <div>
+        <h4 class="text-capitalize fw-bold text-light text-center">Cast</h4>
+        <swiper-container class="swiper-cast" init="false">
+          <swiper-slide *ngFor="let cast of movieCredits?.cast">
+            <img class="image-cast" src="https://image.tmdb.org/t/p/w500{{ cast?.profile_path }}" alt="">
+            <p class="lead text-light fw-bold ">{{cast?.name}}</p>
+          </swiper-slide>
+        </swiper-container>
       </div>
     </div>
     <h4 class="fw-bold text-capitalize text-center" *ngIf="videos">Videos</h4>

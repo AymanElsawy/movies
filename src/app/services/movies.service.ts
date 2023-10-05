@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment.development';
 import { MoveiDetails } from 'src/app/models/movie-detials';
 import { Movie } from 'src/app/models/movie.model';
 import { MovieVidoes } from '../models/movie-videos';
+import { Credits } from '../models/movie-credits';
 
 @Injectable({
   providedIn: 'root',
@@ -61,6 +62,11 @@ export class MoviesService {
   getMovieVideos(id: number) {
     return this.http.get<{ id: number; results: MovieVidoes[] }>(
       `${environment.apiUrl}${id}/videos?${environment.apiKey}${environment.lang}`
+    );
+  }
+  getMovieCredits(id: number) {
+    return this.http.get<Credits>(
+      `${environment.apiUrl}${id}/credits?${environment.apiKey}${environment.lang}`
     );
   }
 }

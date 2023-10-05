@@ -2,6 +2,7 @@ import { MoviesService } from 'src/app/services/movies.service';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MoveiDetails } from 'src/app/models/movie-detials';
+import { Credits } from 'src/app/models/movie-credits';
 
 @Component({
   selector: 'app-movie-details',
@@ -13,6 +14,7 @@ export class MovieDetailsComponent {
   photo = '';
   id!: number;
   videos: string[] = [];
+  movieCredits!:Credits;
   constructor(
     private route: ActivatedRoute,
     private MoviesService: MoviesService
@@ -22,6 +24,7 @@ export class MovieDetailsComponent {
     this.MoviesService.details.next(true);
     this.getMovieDetails();
     this.getMovieVideos();
+    this.getMovieCredits();
   }
   getMovieDetails() {
     this.route.data.subscribe({
@@ -79,8 +82,11 @@ export class MovieDetailsComponent {
       },
     };
     const swiperEl: any = document.querySelector('.swiper');
+    const swiperElCast: any = document.querySelector('.swiper-cast');
     Object.assign(swiperEl, swiperParams);
+    Object.assign(swiperElCast, swiperParams);
     swiperEl.initialize();
+    swiperElCast.initialize();
   }
   getMovieVideos() {
     this.MoviesService.getMovieVideos(this.id).subscribe({
@@ -88,6 +94,14 @@ export class MovieDetailsComponent {
         data.results.map((video) => {
           this.videos.push(`https://www.youtube.com/embed/${video.key}`);
         });
+      },
+    });
+  }
+  getMovieCredits() {
+    this.MoviesService.getMovieCredits(this.id).subscribe({
+      next: (data) => {
+        this.movieCredits = data ;
+        console.log(this.movieCredits);
       },
     });
   }
