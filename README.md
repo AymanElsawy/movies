@@ -7,11 +7,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Dependencies
 
-1- bootstrap__
-2- bootstrap-icons__
-3- ng-circle-progress__
-4- ngx-pagination__
-5- swiper__
+1- bootstrap<br>
+2- bootstrap-icons<br>
+3- ng-circle-progress<br>
+4- ngx-pagination<br>
+5- swiper<br>
 
 ## Clone this repo to your devcie then run " npm install " to install dependencies
 
