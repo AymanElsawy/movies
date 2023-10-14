@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
 
-##Live Demo
+## Live Demo
 (https://movies-home-ng.netlify.app/)
 
 ## Dependencies
